@@ -1,42 +1,637 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============================================================
+   RAYSHO DESIGN TOKENS v2.0 — SKILL_30
+   Light Mode (default)
+   ============================================================ */
+
+:root {
+  /* Font families */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-serif:   'Lora', Georgia, serif;
+
+  /* Backgrounds */
+  --bg-primary:      #FAFAF8;
+  --bg-secondary:    #F3F2EF;
+  --bg-tertiary:     #EAEAE5;
+  --bg-card:         #FFFFFF;
+  --bg-card-hover:   #F8F8F5;
+  --bg-ai-signal:    rgba(26, 107, 74, 0.04);
+
+  /* Accent — Primary (Sage Green) */
+  --accent-primary:          #1A6B4A;
+  --accent-primary-hover:    #155A3E;
+  --accent-primary-subtle:   #E8F5EE;
+  --accent-primary-muted:    #C5E8D5;
+  --accent-primary-glow:     rgba(26, 107, 74, 0.15);
+
+  /* Accent — Secondary (Bronze Gold) */
+  --accent-secondary:          #A0711A;
+  --accent-secondary-hover:    #8A5F14;
+  --accent-secondary-subtle:   #FFF3DC;
+  --accent-secondary-muted:    #F5DFA0;
+
+  /* Text */
+  --text-primary:    #111318;
+  --text-secondary:  #5C6370;
+  --text-tertiary:   #9AA0AC;
+  --text-inverse:    #FAFAF8;
+  --text-ai:         #1A6B4A;
+
+  /* Borders */
+  --border-default:  rgba(0, 0, 0, 0.07);
+  --border-strong:   rgba(0, 0, 0, 0.14);
+  --border-focus:    #1A6B4A;
+  --border-ai:       rgba(26, 107, 74, 0.30);
+
+  /* Semantic */
+  --color-success:   #1A7A4A;
+  --color-error:     #B03A2E;
+  --color-warning:   #A07010;
+  --color-new:       #1A5090;
+
+  /* Shadows */
+  --shadow-card:       0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.10);
+  --shadow-modal:      0 8px 40px rgba(0, 0, 0, 0.14);
+  --shadow-prompt:     0 0 0 1px rgba(26, 107, 74, 0.12), 0 2px 8px rgba(26, 107, 74, 0.06);
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-pill: 999px;
+
+  /* Spacing (8px base) */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+  --space-8: 32px;  --space-10: 40px; --space-12: 48px;
+  --space-16: 64px; --space-20: 80px; --space-24: 96px;
+
+  /* Animation durations */
+  --duration-fast:   150ms;
+  --duration-normal: 200ms;
+  --duration-slow:   300ms;
+  --duration-reveal: 400ms;
+  --duration-aurora: 12000ms;
+}
+
+/* ============================================================
+   Dark Mode — Intelligent Evening Mode
+   ============================================================ */
+.dark {
+  --bg-primary:      #13151A;
+  --bg-secondary:    #1C1F27;
+  --bg-tertiary:     #252930;
+  --bg-card:         #1C1F27;
+  --bg-card-hover:   #252930;
+  --bg-ai-signal:    rgba(46, 168, 118, 0.05);
+
+  --accent-primary:          #2EA876;
+  --accent-primary-hover:    #26906A;
+  --accent-primary-subtle:   #0A2A1C;
+  --accent-primary-muted:    #0F3D28;
+  --accent-primary-glow:     rgba(46, 168, 118, 0.20);
+
+  --accent-secondary:          #D4A040;
+  --accent-secondary-hover:    #BA8C34;
+  --accent-secondary-subtle:   #2A1F00;
+  --accent-secondary-muted:    #3D2E00;
+
+  --text-primary:    #F0EDE6;
+  --text-secondary:  #8A97AB;
+  --text-tertiary:   #5A6475;
+  --text-inverse:    #111318;
+  --text-ai:         #2EA876;
+
+  --border-default:  rgba(255, 255, 255, 0.07);
+  --border-strong:   rgba(255, 255, 255, 0.14);
+  --border-focus:    #2EA876;
+  --border-ai:       rgba(46, 168, 118, 0.35);
+
+  --color-success:   #24B068;
+  --color-error:     #E05A4F;
+  --color-warning:   #D4A040;
+  --color-new:       #5090D0;
+
+  --shadow-card:       0 2px 12px rgba(0, 0, 0, 0.30);
+  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --shadow-modal:      0 8px 40px rgba(0, 0, 0, 0.60);
+  --shadow-prompt:     0 0 0 1px rgba(46, 168, 118, 0.18), 0 2px 8px rgba(46, 168, 118, 0.10);
+}
+
+/* ============================================================
+   Base Reset
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body { height: 100%; }
 
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background: #07080c;
-  color: #eef0f4;
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
+  transition: background-color var(--duration-normal) ease,
+              color var(--duration-normal) ease;
 }
 
 a { color: inherit; text-decoration: none; }
 
 input, textarea, button { font-family: inherit; }
 
-input::placeholder { color: #3d4455; }
+input::placeholder { color: var(--text-tertiary); }
 
+/* Scrollbar */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2a2e3a; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #3d4455; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-button { cursor: pointer; transition: opacity 0.15s; }
-button:hover { opacity: 0.85; }
+/* Buttons base */
+button { cursor: pointer; }
 button:disabled { cursor: not-allowed; opacity: 0.45; }
 
 pre { overflow-x: auto; }
 
+/* Mobile font size */
 @media (max-width: 768px) {
   html { font-size: 15px; }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.85); }
+/* ============================================================
+   Intelligence Signal Animations (SKILL_30 Part 6)
+   ============================================================ */
+
+/* Signal 1 — Aurora hero background */
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
+.hero-aurora {
+  position:         absolute;
+  inset:            0;
+  background:       linear-gradient(
+                      135deg,
+                      transparent 0%,
+                      rgba(26, 107, 74, 0.06) 25%,
+                      rgba(26, 160, 100, 0.04) 50%,
+                      rgba(26, 107, 74, 0.06) 75%,
+                      transparent 100%
+                    );
+  background-size:  400% 400%;
+  animation:        aurora var(--duration-aurora) ease infinite;
+  pointer-events:   none;
+  z-index:          0;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+/* Live indicator — pulsing dot in nav */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.live-indicator {
+  width:          6px;
+  height:         6px;
+  border-radius:  50%;
+  background:     var(--accent-primary);
+  animation:      pulse-live 2s ease infinite;
+  display:        inline-block;
+  margin-left:    4px;
+  vertical-align: middle;
+  flex-shrink:    0;
+}
+
+/* Signal 2 — Prompt reveal cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.cursor-blink {
+  animation:  blink 500ms ease infinite;
+  color:      var(--accent-primary);
+  font-style: normal;
+}
+
+/* Fade up */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Skeleton loading */
+@keyframes skeleton-sweep {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-secondary) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation:       skeleton-sweep 1.5s ease-in-out infinite;
+  border-radius:   var(--radius-sm);
+}
+
+/* Modal enter */
+@keyframes modalEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-enter {
+  animation: modalEnter var(--duration-normal) ease forwards;
+}
+
+/* Section reveal on scroll */
+.reveal-on-scroll {
+  opacity:    0;
+  transform:  translateY(12px);
+  transition: opacity var(--duration-slow) ease,
+              transform var(--duration-slow) ease;
+}
+.reveal-on-scroll.revealed {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:  0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-aurora    { animation: none; background: rgba(26, 107, 74, 0.04); }
+  .live-indicator { animation: none; opacity: 1; }
+  .skeleton       { animation: none; background: var(--bg-tertiary); opacity: 0.7; }
+  .cursor-blink   { animation: none; display: none; }
+}
+
+/* ============================================================
+   Profile Assessment Modal (SKILL_31 Engine 1)
+   ============================================================ */
+.modal-backdrop {
+  position:         fixed;
+  inset:            0;
+  background:       rgba(17, 19, 24, 0.55);
+  backdrop-filter:  blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index:          200;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  padding:          16px;
+}
+
+.modal-assessment {
+  background:    var(--bg-card);
+  border:        1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding:       40px 40px 32px;
+  max-width:     560px;
+  width:         100%;
+  box-shadow:    var(--shadow-modal);
+  animation:     modalEnter var(--duration-normal) ease forwards;
+}
+
+.assessment-progress {
+  display:         flex;
+  gap:             6px;
+  justify-content: center;
+  margin-bottom:   28px;
+}
+
+.progress-dot {
+  width:         8px;
+  height:        8px;
+  border-radius: 50%;
+  background:    var(--bg-tertiary);
+  transition:    background var(--duration-fast) ease;
+}
+
+.progress-dot.active { background: var(--accent-primary); }
+
+.assessment-eyebrow {
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    500;
+  letter-spacing: 0.08em;
+  color:          var(--text-ai);
+  text-transform: uppercase;
+  margin-bottom:  12px;
+}
+
+.assessment-heading {
+  font-family:   var(--font-display);
+  font-size:     22px;
+  font-weight:   700;
+  color:         var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.assessment-sub {
+  font-family:   var(--font-body);
+  font-size:     14px;
+  color:         var(--text-secondary);
+  margin-bottom: 24px;
+  line-height:   1.5;
+}
+
+.assessment-grid {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   10px;
+  margin-bottom:         24px;
+}
+
+.assessment-tile {
+  background:     var(--bg-secondary);
+  border:         1px solid var(--border-default);
+  border-radius:  var(--radius-md);
+  padding:        14px 16px;
+  text-align:     left;
+  cursor:         pointer;
+  transition:     all var(--duration-fast) ease;
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+}
+
+.assessment-tile:hover {
+  border-color: var(--accent-primary-muted);
+  background:   var(--accent-primary-subtle);
+}
+
+.assessment-tile.selected {
+  border-color: var(--accent-primary);
+  background:   var(--accent-primary-subtle);
+  box-shadow:   0 0 0 1px var(--accent-primary);
+}
+
+.tile-label {
+  font-family: var(--font-body);
+  font-size:   14px;
+  font-weight: 600;
+  color:       var(--text-primary);
+  line-height: 1.3;
+}
+
+.tile-sub {
+  font-family: var(--font-body);
+  font-size:   12px;
+  color:       var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.assessment-skip {
+  display:    block;
+  width:      100%;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size:  13px;
+  color:      var(--text-tertiary);
+  background: none;
+  border:     none;
+  cursor:     pointer;
+  padding:    8px 0;
+  transition: color var(--duration-fast) ease;
+}
+
+.assessment-skip:hover { color: var(--text-secondary); }
+
+/* ============================================================
+   PRO Modal — Glassmorphic (SKILL_30 Part 9)
+   ============================================================ */
+.modal-pro {
+  position:         relative;
+  background:       rgba(255, 255, 255, 0.90);
+  backdrop-filter:  blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border:           1px solid rgba(255, 255, 255, 0.60);
+  border-radius:    var(--radius-xl);
+  box-shadow:       var(--shadow-modal);
+  padding:          40px 48px;
+  max-width:        480px;
+  width:            90vw;
+  animation:        modalEnter var(--duration-normal) ease forwards;
+}
+
+.dark .modal-pro {
+  background:   rgba(28, 31, 39, 0.90);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Gold accent line — the ONE gradient on the platform */
+.modal-pro::before {
+  content:        '';
+  position:       absolute;
+  top:            0;
+  left:           32px;
+  right:          32px;
+  height:         2px;
+  background:     linear-gradient(90deg, transparent, var(--accent-secondary), transparent);
+  border-radius:  var(--radius-pill);
+}
+
+/* ============================================================
+   Prompt Block (SKILL_30 Component — JetBrains Mono)
+   ============================================================ */
+.prompt-block {
+  position:      relative;
+  background:    var(--bg-tertiary);
+  border-left:   3px solid var(--border-ai);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding:       20px 24px 20px 20px;
+  font-family:   var(--font-mono);
+  font-size:     14px;
+  line-height:   1.75;
+  color:         var(--text-primary);
+  white-space:   pre-wrap;
+  word-break:    break-word;
+  box-shadow:    var(--shadow-prompt);
+}
+
+.prompt-block .copy-btn {
+  position:      absolute;
+  top:           12px;
+  right:         12px;
+  background:    var(--bg-card);
+  border:        1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding:       4px 10px;
+  font-family:   var(--font-body);
+  font-size:     12px;
+  font-weight:   500;
+  color:         var(--text-secondary);
+  cursor:        pointer;
+  transition:    all var(--duration-fast) ease;
+  white-space:   nowrap;
+}
+
+.prompt-block .copy-btn:hover,
+.prompt-block .copy-btn.copied {
+  background:    var(--accent-primary-subtle);
+  color:         var(--accent-primary);
+  border-color:  var(--accent-primary);
+}
+
+/* ============================================================
+   Tier Badges (SKILL_30 Component)
+   ============================================================ */
+.badge-free {
+  background:     var(--accent-primary-subtle);
+  color:          var(--accent-primary);
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding:        2px 8px;
+  border-radius:  var(--radius-pill);
+  display:        inline-flex;
+  align-items:    center;
+}
+
+.badge-pro {
+  background:     var(--accent-secondary-subtle);
+  color:          var(--accent-secondary);
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding:        2px 8px;
+  border-radius:  var(--radius-pill);
+  display:        inline-flex;
+  align-items:    center;
+}
+
+.badge-claude {
+  background:     transparent;
+  color:          var(--text-tertiary);
+  border:         1px solid var(--border-default);
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    400;
+  padding:        2px 8px;
+  border-radius:  var(--radius-pill);
+  display:        inline-flex;
+  align-items:    center;
+}
+
+.badge-new {
+  background:     rgba(26, 80, 144, 0.08);
+  color:          var(--color-new);
+  font-family:    var(--font-body);
+  font-size:      11px;
+  font-weight:    500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding:        2px 8px;
+  border-radius:  var(--radius-pill);
+  display:        inline-flex;
+  align-items:    center;
+}
+
+/* ============================================================
+   Navigation — sticky with blur (SKILL_30 Part 5)
+   ============================================================ */
+.raysho-nav {
+  position:         sticky;
+  top:              0;
+  z-index:          50;
+  background:       rgba(250, 250, 248, 0.90);
+  backdrop-filter:  blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom:    1px solid var(--border-default);
+  transition:       background var(--duration-normal) ease;
+}
+
+.dark .raysho-nav {
+  background: rgba(19, 21, 26, 0.90);
+}
+
+/* ============================================================
+   Locked Prompt Frosted Preview (SKILL_30 Part 9)
+   ============================================================ */
+.prompt-locked-preview {
+  position:   relative;
+  overflow:   hidden;
+  max-height: 120px;
+}
+
+.prompt-locked-preview::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0;
+  left:       0;
+  right:      0;
+  height:     80px;
+  background: linear-gradient(transparent, var(--bg-card) 80%);
+}
+
+/* ============================================================
+   Competence Marker (SKILL_31 Engine 1)
+   ============================================================ */
+.competence-marker {
+  font-family: var(--font-body);
+  font-size:   13px;
+  color:       var(--text-tertiary);
+  padding:     8px 0;
+}
+
+/* ============================================================
+   AI Score Display (Signal 3)
+   ============================================================ */
+.ai-score {
+  font-family: var(--font-body);
+  font-size:   13px;
+  font-weight: 500;
+  color:       var(--text-ai);
+}
+
+.ai-score-label {
+  font-family: var(--font-body);
+  font-size:   13px;
+  color:       var(--text-tertiary);
+}
+
+/* ============================================================
+   Landing Page Bento Cards — hover via CSS (Server Component safe)
+   ============================================================ */
+.bento-cell {
+  background:     var(--bg-card);
+  border:         1px solid var(--border-default);
+  border-radius:  var(--radius-lg);
+  box-shadow:     var(--shadow-card);
+  transition:     box-shadow 150ms ease, transform 100ms ease;
+  text-decoration: none;
+  color:          inherit;
+  display:        flex;
+  flex-direction: column;
+  gap:            12px;
+}
+.bento-cell:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform:  translateY(-1px);
 }
