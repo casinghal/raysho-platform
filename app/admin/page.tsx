@@ -117,7 +117,7 @@ export default function AdminDashboard() {
             <div style={{ width: 26, height: 26, borderRadius: 7, background: C.accent, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="13" height="13" viewBox="0 0 26 26" fill="none"><path d="M7 13h12M13 7l6 6-6 6" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
-            <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: '-0.02em' }}>FintelliQ Admin</span>
+            <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: '-0.02em' }}>Raysho Admin</span>
             {pendingCount > 0 && (
               <span style={{ fontSize: 11, fontWeight: 700, background: C.accent, color: '#000', borderRadius: 20, padding: '2px 9px' }}>
                 {pendingCount} pending
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
                 Clicking "Run now" triggers the full ingestion pipeline: YouTube API (8 keyword queries) + 20 RSS feeds → Claude scoring → items above 6.5 score appear in your Review Queue.
               </div>
               <div style={{ fontSize: 12, color: C.t3, marginTop: 8, lineHeight: 1.6 }}>
-                This runs automatically every day at 06:00 UTC via Netlify Scheduled Function. Use "Run now" to manually trigger a fresh fetch at any time.
+                This runs automatically every day at 06:00 UTC via Vercel Cron. Use "Run now" to manually trigger a fresh fetch at any time.
               </div>
             </div>
             <button onClick={runCron} disabled={cronLoading}

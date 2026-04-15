@@ -4,16 +4,16 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'FintelliQ — AI & F&A Knowledge Platform for Finance Professionals',
+  title: 'Raysho — AI & F&A Knowledge Platform for Finance Professionals',
   description: 'Consulting-grade AI prompts, real-world case studies, tool comparisons and weekly fresh content for F&A professionals, consultants and BPO operators. Free access. No signup required.',
   openGraph: {
-    title: 'FintelliQ — AI & F&A Knowledge Platform',
-    description: 'The practitioner\'s guide to AI in Finance & Accounting. 230+ consulting prompts across 10 industries, Big Four case studies, and weekly fresh content.',
+    title: 'Raysho — AI & F&A Knowledge Platform',
+    description: 'The practitioner\'s guide to AI in Finance & Accounting. 80+ consulting prompts, Big Four case studies, and weekly fresh content.',
     type: 'website',
-    url: 'https://fintelliQ.com',
+    url: 'https://raysho.ai',
   },
   alternates: {
-    canonical: 'https://fintelliQ.com',
+    canonical: 'https://raysho.ai',
   },
 };
 
@@ -28,15 +28,15 @@ const C = {
 const FEATURES = [
   { icon: '🤖', title: 'AI Tools Hub', desc: 'Claude, ChatGPT, Copilot, Grok, Gemini — F&A-specific use cases and copy-paste prompt frameworks for each.' },
   { icon: '🏗️', title: 'Process Tower Library', desc: 'AP, AR, R2R, Tax, Audit, FP&A and more — 10 structured AI prompt templates per function.' },
-  { icon: '⚡', title: 'Prompt Library', desc: '230+ structured prompt frameworks designed as professional starting points, spanning 8 process towers and 10 industries. All outputs require practitioner review before use.' },
-  { icon: '📊', title: 'Real-World Case Studies', desc: 'Published results from Deloitte, EY, PwC and KPMG — with source disclosures. FintelliQ is not affiliated with any of these firms.' },
+  { icon: '⚡', title: 'Prompt Library', desc: '80+ structured prompt frameworks designed as professional starting points. All outputs require practitioner review before use.' },
+  { icon: '📊', title: 'Real-World Case Studies', desc: 'Published results from Deloitte, EY, PwC and KPMG — with source disclosures. Raysho is not affiliated with any of these firms.' },
   { icon: '🔄', title: 'Auto-Refreshing Content', desc: 'Our AI engine scans 20+ publications and YouTube daily. Fresh content every week — old content rotates out.' },
   { icon: '🔍', title: 'Live Discovery Feed', desc: 'AI-curated articles, videos and reports on AI in F&A — scored for relevance and published weekly.' },
 ];
 
 const STATS = [
-  { v: '230+', l: 'AI prompt frameworks' },
-  { v: '10', l: 'Industries covered' },
+  { v: '80+', l: 'AI prompt frameworks' },
+  { v: '5', l: 'AI tools covered' },
   { v: '8', l: 'Process towers' },
   { v: 'Weekly', l: 'Content refresh' },
 ];
@@ -52,7 +52,7 @@ export default function LandingPage() {
             <div style={{ width: 28, height: 28, borderRadius: 8, background: C.accent, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="14" height="14" viewBox="0 0 26 26" fill="none"><path d="M7 13h12M13 7l6 6-6 6" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
-            <span style={{ fontSize: 15, fontWeight: 700, letterSpacing: '-0.02em' }}>FintelliQ</span>
+            <span style={{ fontSize: 15, fontWeight: 700, letterSpacing: '-0.02em' }}>Raysho</span>
           </div>
           <Link href="/platform" style={{ padding: '9px 20px', borderRadius: 8, background: C.accent, color: '#000', fontSize: 13, fontWeight: 700, display: 'inline-flex', alignItems: 'center' }}>
             Enter Platform →
@@ -100,7 +100,7 @@ export default function LandingPage() {
           <div>
             <div style={{ fontSize: 15, fontWeight: 700, color: C.accent, marginBottom: 6 }}>This platform refreshes every week</div>
             <div style={{ fontSize: 13, color: C.t2, lineHeight: 1.75 }}>
-              FintelliQ's AI engine continuously scans 20+ industry publications and YouTube channels, scores every item for F&amp;A relevance, and surfaces the freshest content weekly. Old content rotates out as newer, more current material comes in. <strong style={{ color: C.text }}>If you find something useful — save that link offline.</strong> It may be replaced by even fresher content on your next visit.
+              Raysho's AI engine continuously scans 20+ industry publications and YouTube channels, scores every item for F&amp;A relevance, and surfaces the freshest content weekly. Old content rotates out as newer, more current material comes in. <strong style={{ color: C.text }}>If you find something useful — save that link offline.</strong> It may be replaced by even fresher content on your next visit.
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function LandingPage() {
           Free access during launch. No signup. No paywall. Open the platform and start using it today.
         </p>
         <Link href="/platform" style={{ padding: '16px 40px', borderRadius: 10, background: C.accent, color: '#000', fontSize: 16, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          Enter FintelliQ →
+          Enter Raysho →
         </Link>
       </section>
 
@@ -164,7 +164,7 @@ export default function LandingPage() {
             <a href="mailto:contact.us@avantage-partners.com" style={{ fontSize: 12, color: C.t3, textDecoration: 'none' }}>Contact</a>
           </div>
           <div style={{ fontSize: 11, color: C.t3, lineHeight: 1.8, textAlign: 'center' }}>
-            FintelliQ is an independent educational platform. Not affiliated with, endorsed by, or sponsored by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI. All trademarks and brand names belong to their respective owners. Content is for educational purposes only — not professional financial, accounting, tax, or legal advice. All AI-generated outputs require review by a qualified professional before use.
+            Raysho is an independent educational platform. Not affiliated with, endorsed by, or sponsored by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI. All trademarks and brand names belong to their respective owners. Content is for educational purposes only — not professional financial, accounting, tax, or legal advice. All AI-generated outputs require review by a qualified professional before use.
           </div>
         </div>
       </footer>

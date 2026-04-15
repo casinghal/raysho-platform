@@ -12,4 +12,4 @@ Disallow: /api/
 # Block Next.js internals
 Disallow: /_next/
 
-Sitemap: https://fintelliQ.com/sitemap.xml
+Sitemap: https://raysho.ai/sitemap.xml

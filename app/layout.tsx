@@ -4,20 +4,20 @@ import './globals.css';
 // Root layout metadata - acts as fallback for pages that don't set their own
 export const metadata: Metadata = {
   title: {
-    default: 'FintelliQ — AI & F&A Knowledge Platform',
-    template: '%s — FintelliQ',
+    default: 'Raysho — AI & F&A Knowledge Platform',
+    template: '%s — Raysho',
   },
   description: 'The practitioner\'s guide to AI in Finance & Accounting. Structured prompt frameworks, real-world case studies, tool comparisons and weekly fresh content.',
-  metadataBase: new URL('https://fintelliQ.com'),
+  metadataBase: new URL('https://raysho.ai'),
   openGraph: {
-    siteName: 'FintelliQ',
+    siteName: 'Raysho',
     type: 'website',
     images: [
       {
         url: '/og-image.png',       // Place your 1200x630 screenshot of og-image-source.html here
         width: 1200,
         height: 630,
-        alt: 'FintelliQ — AI & F&A Knowledge Platform',
+        alt: 'Raysho — AI & F&A Knowledge Platform',
       },
     ],
   },

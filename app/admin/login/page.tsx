@@ -29,7 +29,7 @@ export default function AdminLogin() {
       <div style={{ background: '#0f1117', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: '36px 32px', width: '100%', maxWidth: 380 }}>
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
           <div style={{ width: 44, height: 44, borderRadius: 12, background: '#f0b429', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px', fontSize: 20 }}>🔐</div>
-          <div style={{ fontSize: 20, fontWeight: 700, color: '#eef0f4', marginBottom: 4 }}>FintelliQ Admin</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: '#eef0f4', marginBottom: 4 }}>Raysho Admin</div>
           <div style={{ fontSize: 13, color: '#8891a4' }}>Enter your admin password</div>
         </div>
         <form onSubmit={login}>

@@ -23,7 +23,7 @@ const FLOW: Record<string, { id: string; label: string; desc: string }> = {
   prompts:  { id: 'industry', label: 'Industry Master Prompts',       desc: 'Deep-analysis prompts built for your specific sector' },
   industry: { id: 'feed',     label: 'Try Live Discovery',            desc: 'AI-powered search for the latest F&A content published this week' },
   feed:     { id: 'lab',      label: 'Explore the Automation Lab',    desc: '100 automation ideas across 10 F&A towers' },
-  lab:      { id: 'home',     label: 'Back to Overview',              desc: 'You have explored the full FintelliQ platform' },
+  lab:      { id: 'home',     label: 'Back to Overview',              desc: 'You have explored the full Raysho platform' },
 };
 
 const NAV = [
@@ -96,7 +96,7 @@ function NextSection({ currentId, onNavigate }: { currentId: string; onNavigate:
 function DisclaimerBanner() {
   return (
     <div style={{ background: '#0a0b0f', borderTop: `1px solid ${C.border}`, padding: '10px 20px', fontSize: 10, color: C.t3, lineHeight: 1.7, flexShrink: 0 }}>
-      <strong style={{ color: '#4a4e5a' }}>Legal notice:</strong> FintelliQ is an independent educational platform. Not affiliated with or endorsed by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI. All trademarks belong to their respective owners. Content is for educational purposes only — not professional advice. No specific learning outcome is guaranteed.
+      <strong style={{ color: '#4a4e5a' }}>Legal notice:</strong> Raysho is an independent educational platform. Not affiliated with or endorsed by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI. All trademarks belong to their respective owners. Content is for educational purposes only — not professional advice. No specific learning outcome is guaranteed.
     </div>
   );
 }
@@ -105,8 +105,8 @@ function LegalModal({ onAccept }: { onAccept: () => void }) {
   const [checked, setChecked] = useState(false);
   const items = [
     { icon: '📚', title: 'Educational content only', body: 'Everything on this platform is for learning purposes. It is not professional financial, accounting, tax, or legal advice.' },
-    { icon: '🔗', title: 'Independent platform', body: 'FintelliQ is not affiliated with, endorsed by, or sponsored by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI.' },
-    { icon: '📊', title: 'Third-party data', body: 'Case study figures are drawn from public sources and company press releases. FintelliQ has not independently verified them.' },
+    { icon: '🔗', title: 'Independent platform', body: 'Raysho is not affiliated with, endorsed by, or sponsored by Deloitte, EY, PwC, KPMG, McKinsey, Anthropic, OpenAI, Microsoft, Google, or xAI.' },
+    { icon: '📊', title: 'Third-party data', body: 'Case study figures are drawn from public sources and company press releases. Raysho has not independently verified them.' },
     { icon: '⚙️', title: 'Review AI outputs', body: 'Prompts are frameworks, not finished deliverables. All AI-generated outputs must be reviewed by a qualified professional before use.' },
     { icon: '💳', title: 'Non-refundable subscription', body: 'Digital content access commences on payment. Subscription fees are non-refundable once access has been granted.' },
   ];
@@ -135,7 +135,7 @@ function LegalModal({ onAccept }: { onAccept: () => void }) {
         </label>
         <button onClick={() => checked && onAccept()} disabled={!checked}
           style={{ width: '100%', padding: '14px', borderRadius: 10, border: 'none', background: checked ? C.accent : '#2a2e3a', color: checked ? '#000' : C.t3, fontSize: 14, fontWeight: 700, cursor: checked ? 'pointer' : 'not-allowed', fontFamily: F.sans, transition: 'all 0.2s' }}>
-          {checked ? 'Enter FintelliQ →' : 'Check the box above to continue'}
+          {checked ? 'Enter Raysho →' : 'Check the box above to continue'}
         </button>
       </div>
     </div>
@@ -224,7 +224,7 @@ function ToolsHub({ onNavigate }: { onNavigate: (id: string) => void }) {
       {/* ── Header ── */}
       <div style={{ marginBottom: 24 }}>
         <h2 style={{ fontFamily: F.serif, fontSize: isMobile ? 22 : 26, fontWeight: 400, color: C.text, marginBottom: 6 }}>AI Tools Hub</h2>
-        <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7 }}>F&A-specific use cases for every major AI tool. FintelliQ is not affiliated with any of these products.</p>
+        <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7 }}>F&A-specific use cases for every major AI tool. Raysho is not affiliated with any of these products.</p>
       </div>
 
       {/* ── Rich Section Brief ── */}
@@ -415,7 +415,7 @@ function AutomationLab({ onNavigate }: { onNavigate: (id: string) => void }) {
   const [filterMaturity, setFilterMaturity] = useState('All');
   const [filterEffort, setFilterEffort] = useState('All');
 
-  const TOWERS_LAB: Array<{id: string; label: string; color: string; count: number; soon?: boolean}> = [
+  const TOWERS_LAB: Array<{ id: string; label: string; color: string; count: number; soon?: boolean }> = [
     { id: 'AP', label: 'Accounts Payable', color: '#f0b429', count: 10 },
     { id: 'AR', label: 'Accounts Receivable', color: '#10b981', count: 10 },
     { id: 'R2R', label: 'Record to Report', color: '#4a9eff', count: 10 },
@@ -682,7 +682,7 @@ function AutomationLab({ onNavigate }: { onNavigate: (id: string) => void }) {
                         {idea.kpis.map((kpi: typeof idea.kpis[0], ki: number) => (
                           <div key={ki} style={{ padding: '12px 14px', background: C.surface, borderRadius: 8, border: `1px solid ${C.border}` }}>
                             <div style={{ fontSize: 12, fontWeight: 600, color: C.text, marginBottom: 6 }}>{kpi.metric}</div>
-                            <div style={{ display: 'flex', gap: 8, flexDirection: isMobile ? 'column' : 'row', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: isMobile ? 8 : 20, flexDirection: isMobile ? 'column' : 'row', flexWrap: 'wrap' }}>
                               <div style={{ flex: 1, minWidth: 140 }}>
                                 <div style={{ fontSize: 9, fontWeight: 700, color: '#ef4444', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 3 }}>Before</div>
                                 <div style={{ fontSize: 12, color: C.t2 }}>{kpi.before}</div>
@@ -729,7 +729,7 @@ function CaseStudies({ onNavigate }: { onNavigate: (id: string) => void }) {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h2 style={{ fontFamily: F.serif, fontSize: isMobile ? 22 : 26, fontWeight: 400, color: C.text, marginBottom: 6 }}>Real-World Case Studies</h2>
-        <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7 }}>Real operational results from named companies — AR, AP, FP&A, tax, audit, and accounting practices. Sources cited. FintelliQ has not independently verified any figures.</p>
+        <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7 }}>Real operational results from named companies — AR, AP, FP&A, tax, audit, and accounting practices. Sources cited. Raysho has not independently verified any figures.</p>
       </div>
       <SectionBrief sectionId="cases" sectionName="AI in F&A Case Studies" resources={CASES.map((c: { firm: string; cat: string; src: string }) => ({ title: c.firm + ' — ' + c.cat, src: c.src }))} />
       <div style={{ background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 10, padding: '12px 16px', marginBottom: 16 }}>
@@ -761,6 +761,83 @@ function CaseStudies({ onNavigate }: { onNavigate: (id: string) => void }) {
         </div>
       </div>
       <NextSection currentId="cases" onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+
+function ProcessTowers({ onNavigate }: { onNavigate: (id: string) => void }) {
+  const w = useWindowWidth(); const isMobile = w < 768;
+  const towers = TOWERS as Array<{ id: string; name: string; short: string; color: string; summary: string; stats: string[]; prompts: Array<{ title: string; prompt: string }> }>;
+  const [activeTower, setActiveTower] = useState(towers[0]?.id ?? 'ap');
+  const [expandedTitle, setExpandedTitle] = useState<string | null>(null);
+  const tower = towers.find(t => t.id === activeTower) ?? towers[0];
+
+  return (
+    <div>
+      <div style={{ marginBottom: 20 }}>
+        <h2 style={{ fontFamily: F.serif, fontSize: isMobile ? 22 : 26, fontWeight: 400, color: C.text, marginBottom: 6 }}>Process Towers</h2>
+        <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7 }}>AI use cases and Claude-optimised prompts for every core F&A function. Select a tower to explore prompts and implementation guidance.</p>
+      </div>
+      <SectionBrief sectionId="towers" sectionName="F&A Process Towers" resources={[]} />
+      {/* Tower selector */}
+      <div style={{ display: 'flex', gap: 6, overflowX: 'auto', paddingBottom: 4, marginBottom: 16, flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
+        {towers.map(t => (
+          <button key={t.id} onClick={() => { setActiveTower(t.id); setExpandedTitle(null); }}
+            style={{ fontSize: 11, padding: '7px 14px', borderRadius: 20, border: `1px solid ${activeTower === t.id ? t.color + '88' : C.border}`, background: activeTower === t.id ? t.color + '18' : 'transparent', color: activeTower === t.id ? t.color : C.t2, cursor: 'pointer', fontFamily: F.sans, fontWeight: activeTower === t.id ? 600 : 400, whiteSpace: 'nowrap', flexShrink: 0, minHeight: 34 }}>
+            {t.short}
+          </button>
+        ))}
+      </div>
+      {/* Active tower header */}
+      {tower && (
+        <div>
+          <div style={{ background: C.card, border: `1px solid ${tower.color}33`, borderRadius: 10, padding: '16px 18px', marginBottom: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: tower.color, flexShrink: 0 }} />
+              <div style={{ fontSize: isMobile ? 16 : 18, fontWeight: 600, color: C.text }}>{tower.name}</div>
+            </div>
+            <p style={{ fontSize: 13, color: C.t2, lineHeight: 1.7, margin: '0 0 10px' }}>{tower.summary}</p>
+            {tower.stats?.length > 0 && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                {tower.stats.slice(0, 3).map((s: string, i: number) => (
+                  <div key={i} style={{ fontSize: 11, color: C.t3, padding: '4px 0', borderTop: `1px solid ${C.border}` }}>— {s}</div>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* Prompts */}
+          <div style={{ fontSize: 11, color: C.t3, marginBottom: 10 }}>{tower.prompts?.length ?? 0} prompts for this tower</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {(tower.prompts ?? []).map((p: { title: string; prompt: string }) => {
+              const isOpen = expandedTitle === p.title;
+              return (
+                <div key={p.title} style={{ background: C.card, border: `1px solid ${isOpen ? tower.color + '55' : C.border}`, borderRadius: 9, overflow: 'hidden' }}>
+                  <div onClick={() => setExpandedTitle(isOpen ? null : p.title)} style={{ padding: '13px 16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10, minHeight: 52 }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 13, fontWeight: 500, color: C.text, lineHeight: 1.4 }}>{p.title}</div>
+                    </div>
+                    <div style={{ fontSize: 11, color: C.t3, flexShrink: 0 }}>{isOpen ? '▲' : '▼'}</div>
+                  </div>
+                  {isOpen && (
+                    <div style={{ padding: '0 16px 16px', borderTop: `1px solid ${C.border}` }}>
+                      <div style={{ background: C.bg, borderRadius: 8, padding: '12px 14px', marginTop: 12, position: 'relative' }}>
+                        <pre style={{ fontSize: 12, color: C.t2, lineHeight: 1.7, margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: F.sans }}>{p.prompt}</pre>
+                        <CopyBtn text={p.prompt} />
+                      </div>
+                      <div style={{ marginTop: 10, padding: '8px 12px', background: 'rgba(240,180,41,0.07)', border: '1px solid rgba(240,180,41,0.18)', borderRadius: 7 }}>
+                        <div style={{ fontSize: 11, color: C.accent, fontWeight: 600, marginBottom: 3 }}>Claude-optimised prompt</div>
+                        <div style={{ fontSize: 11, color: C.t3, lineHeight: 1.6 }}>Designed for Claude by Anthropic. For best results, upload your data file alongside this prompt. Review all AI outputs before professional use.</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <NextSection currentId="towers" onNavigate={onNavigate} />
     </div>
   );
 }
@@ -1067,7 +1144,7 @@ const TOPIC_QUERY: Record<string, string> = {
 };
 
 // Inject keyframes once
-const CLOUD_STYLE_ID = 'fintelliQ-cloud-kf';
+const CLOUD_STYLE_ID = 'raysho-cloud-kf';
 function injectCloudKeyframes() {
   if (typeof document === 'undefined') return;
   if (document.getElementById(CLOUD_STYLE_ID)) return;
@@ -1194,8 +1271,8 @@ function LiveDiscovery({ onNavigate }: { onNavigate: (id: string) => void }) {
       const res = await fetch('/api/discover', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic: query }) });
       const data = await res.json();
       if (data.results) setResults(data.results);
-      else { setError('Live discovery is temporarily unavailable. Please try again shortly.'); setResults(null); }
-    } catch { setError('Live discovery is temporarily unavailable. Please try again shortly.'); setResults(null); }
+      else { setError('Live discovery unavailable — showing curated examples.'); setResults((DEMO_FEED as unknown[]).slice(0, 5) as Array<{ type: string; title: string; url: string; source: string; publishDate: string; summary: string; whyItMatters: string }>); }
+    } catch { setError('Live discovery unavailable — showing curated examples.'); setResults((DEMO_FEED as unknown[]).slice(0, 5) as Array<{ type: string; title: string; url: string; source: string; publishDate: string; summary: string; whyItMatters: string }>); }
     finally { setLoading(false); }
   };
 
@@ -1328,36 +1405,6 @@ function LiveDiscovery({ onNavigate }: { onNavigate: (id: string) => void }) {
   );
 }
 
-function ProcessTowers({ onNavigate }: { onNavigate: (id: string) => void }) {
-  const [activeSection, setActiveSection] = React.useState<string | null>(null);
-  const towerList = [
-    { id: 'AP', label: 'Accounts Payable', color: '#f0b429', prompts: 10 },
-    { id: 'AR', label: 'Accounts Receivable', color: '#10b981', prompts: 10 },
-    { id: 'R2R', label: 'Record to Report', color: '#4a9eff', prompts: 10 },
-    { id: 'TREAS', label: 'Treasury and Cash', color: '#e07b4a', prompts: 10 },
-    { id: 'FPA', label: 'FP&A', color: '#a78bfa', prompts: 10 },
-    { id: 'PAY', label: 'Payroll Processing', color: '#60a5fa', prompts: 10 },
-    { id: 'TAX', label: 'Tax & Compliance', color: '#f0b429', prompts: 10 },
-    { id: 'FA', label: 'Fixed Assets', color: '#ef4444', prompts: 10 },
-  ];
-  return (
-    <div>
-      <SectionBrief sectionId="towers" sectionName="Process Towers" resources={[]} />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16, marginTop: 24 }}>
-        {towerList.map(tower => (
-          <div key={tower.id} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20, cursor: 'pointer' }}
-            onClick={() => onNavigate('lab')}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: tower.color, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>{tower.id}</div>
-            <div style={{ fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 8 }}>{tower.label}</div>
-            <div style={{ fontSize: 12, color: C.t2 }}>{tower.prompts} AI prompts</div>
-          </div>
-        ))}
-      </div>
-      <NextSection currentId="towers" onNavigate={onNavigate} />
-    </div>
-  );
-}
-
 function Overview({ onNavigate }: { onNavigate: (id: string) => void }) {
   const w = useWindowWidth(); const isMobile = w < 768;
   const totalPrompts = TOWERS.reduce((acc: number, t: { prompts: unknown[] }) => acc + t.prompts.length, 0);
@@ -1373,7 +1420,7 @@ function Overview({ onNavigate }: { onNavigate: (id: string) => void }) {
   return (
     <div>
       <div style={{ marginBottom: 24 }}>
-        <div style={{ fontSize: 11, color: C.accent, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>FintelliQ · AI & F&A Knowledge Repository</div>
+        <div style={{ fontSize: 11, color: C.accent, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Raysho · AI & F&A Knowledge Repository</div>
         <h2 style={{ fontFamily: F.serif, fontSize: isMobile ? 24 : 30, fontWeight: 400, color: C.text, marginBottom: 12, lineHeight: 1.2 }}>The practitioner's guide to AI in Finance & Accounting</h2>
         <p style={{ fontSize: isMobile ? 13 : 14, color: C.t2, lineHeight: 1.8, maxWidth: 580 }}>Built for F&A professionals, consultants, and BPO operators who want to understand, apply, and stay ahead of AI. Not a course. A living platform that updates itself every week.</p>
       </div>
@@ -1383,7 +1430,7 @@ function Overview({ onNavigate }: { onNavigate: (id: string) => void }) {
           <div style={{ fontSize: isMobile ? 20 : 24, flexShrink: 0, marginTop: 2 }}>🔄</div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: isMobile ? 13 : 14, fontWeight: 700, color: C.accent, marginBottom: 6 }}>This platform refreshes every week — the content you see today may not be here next week</div>
-            <div style={{ fontSize: isMobile ? 12 : 13, color: C.t2, lineHeight: 1.75 }}>FintelliQ's AI engine continuously scans the internet — YouTube, industry journals, research publications — and surfaces the freshest, most relevant AI content for F&A professionals. Old content gets replaced by newer material every week. <strong style={{ color: C.text }}>If you find something useful, save that link offline before your next visit.</strong></div>
+            <div style={{ fontSize: isMobile ? 12 : 13, color: C.t2, lineHeight: 1.75 }}>Raysho's AI engine continuously scans the internet — YouTube, industry journals, research publications — and surfaces the freshest, most relevant AI content for F&A professionals. Old content gets replaced by newer material every week. <strong style={{ color: C.text }}>If you find something useful, save that link offline before your next visit.</strong></div>
             <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
               {[['📡', 'Scans 20+ publications daily'], ['🤖', 'AI scores every item'], ['✅', 'Curated weekly'], ['💾', 'Save links you like']].map(([icon, text]) => (
                 <div key={text as string} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: C.t2, background: C.surface, border: `1px solid ${C.border}`, borderRadius: 6, padding: '5px 10px' }}>
@@ -1446,7 +1493,7 @@ function Logo() {
         <svg width="14" height="14" viewBox="0 0 26 26" fill="none"><path d="M7 13h12M13 7l6 6-6 6" stroke="#000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </div>
       <div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: C.text, letterSpacing: '-0.02em', lineHeight: 1 }}>FintelliQ</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: C.text, letterSpacing: '-0.02em', lineHeight: 1 }}>Raysho</div>
         <div style={{ fontSize: 9, color: C.t3, marginTop: 2, lineHeight: 1 }}>AI · F&A Knowledge</div>
       </div>
     </Link>
@@ -1481,7 +1528,7 @@ export default function PlatformPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: C.bg, fontFamily: F.sans, color: C.text, overflow: 'hidden' }}>
-      {!legalAccepted && <LegalModal onAccept={async () => { await fetch('/api/accept-legal', { method: 'POST' }); setLegalAccepted(true); }} />}
+      {!legalAccepted && <LegalModal onAccept={() => setLegalAccepted(true)} />}
 
       {isMobile ? (
         <>

@@ -1,4 +1,4 @@
-# FintelliQ — Version Changelog
+# Raysho — Version Changelog
 
 ## v7.7 (April 2026) — Netlify Deployment Ready
 

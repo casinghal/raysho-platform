@@ -25,7 +25,7 @@ export async function scoreContent(items: RawItem[]): Promise<ScoredItem[]> {
 
   for (const batch of batches) {
     try {
-      const prompt = `You are an expert content curator for FintelliQ, an AI learning platform for Finance & Accounting (F&A) professionals.
+      const prompt = `You are an expert content curator for Raysho, an AI learning platform for Finance & Accounting (F&A) professionals.
 
 Evaluate each of these ${batch.length} content items. For each, provide:
 1. score: 0-10 (F&A relevance and educational value — 7+ means publish, below 7 filter out)

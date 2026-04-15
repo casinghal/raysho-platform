@@ -1,11 +1,11 @@
-# FintelliQ — Deployment Guide
+# Raysho — Deployment Guide
 **For Pankaj Singhal. Follow each step in order. Takes 60–90 minutes total.**
 
 ---
 
 ## What you will have at the end
-A live website at your own domain (e.g. fintelliQ.com) with:
-- The full FintelliQ platform running
+A live website at your own domain (e.g. raysho.ai) with:
+- The full Raysho platform running
 - Your admin dashboard at yourdomain.com/admin
 - Daily content ingestion running automatically
 - Everything hosted for ~$20/month
@@ -26,11 +26,11 @@ You need accounts on three services. All have free tiers. Create them in this or
 
 1. Go to github.com and sign up for a free account
 2. Click the green **New** button (top left)
-3. Name the repository: `fintelliQ`
+3. Name the repository: `raysho`
 4. Set it to **Private**
 5. Click **Create repository**
 6. On the next page, click **uploading an existing file**
-7. Drag and drop **all files and folders** from the `fintelliQ` folder I gave you
+7. Drag and drop **all files and folders** from the `raysho` folder I gave you
    - Important: upload everything, including subfolders (app, lib, supabase, etc.)
 8. Scroll down, click **Commit changes**
 
@@ -43,13 +43,13 @@ You need accounts on three services. All have free tiers. Create them in this or
 
 1. Go to supabase.com and sign up
 2. Click **New project**
-   - Name: `fintelliQ`
+   - Name: `raysho`
    - Database password: choose a strong password and save it somewhere safe
    - Region: choose the one closest to you (e.g. Europe West for India/UK, US East for USA)
 3. Wait for the project to finish creating (~2 minutes)
 4. In the left sidebar, click **SQL Editor**
 5. Click **New query**
-6. Open the file `supabase/schema.sql` from the fintelliQ folder
+6. Open the file `supabase/schema.sql` from the raysho folder
 7. Copy the entire contents and paste into the SQL editor
 8. Click **Run** (green button, top right)
 9. You should see: "Success. No rows returned"
@@ -71,7 +71,7 @@ You need accounts on three services. All have free tiers. Create them in this or
 1. Go to console.cloud.google.com
 2. Sign in with a Google account
 3. Click **Select a project** → **New Project**
-   - Name: `FintelliQ`
+   - Name: `Raysho`
    - Click **Create**
 4. In the search bar, type **YouTube Data API v3** and click it
 5. Click **Enable**
@@ -91,7 +91,7 @@ You need accounts on three services. All have free tiers. Create them in this or
 2. Sign up or sign in
 3. Click **API Keys** in the left sidebar
 4. Click **Create Key**
-   - Name: `FintelliQ`
+   - Name: `Raysho`
 5. Copy the key that appears → this is your `ANTHROPIC_API_KEY`
    - **Important: copy it now.** It will not be shown again.
 6. Add credit to your account: click **Plans & Billing** → add $20
@@ -106,7 +106,7 @@ You need accounts on three services. All have free tiers. Create them in this or
 
 1. Go to vercel.com and sign up (choose "Continue with GitHub")
 2. Click **Add New Project**
-3. Find your `fintelliQ` repository and click **Import**
+3. Find your `raysho` repository and click **Import**
 4. Under **Framework Preset**, select **Next.js** (it may detect it automatically)
 5. **Do not click Deploy yet** — you need to add environment variables first
 
@@ -123,13 +123,13 @@ You need accounts on three services. All have free tiers. Create them in this or
 | `YOUTUBE_API_KEY` | Your YouTube key from Step 3 |
 | `ADMIN_PASSWORD` | Choose a strong password — this is how you log into /admin |
 | `ADMIN_SECRET` | Type any random 32-character string (e.g. `xK9mP2qR7nL4wT8vY1jA5hE3uB6cF0dN`) |
-| `CRON_SECRET` | Type any random string (e.g. `cron-fintelliQ-2026-secret-key`) |
+| `CRON_SECRET` | Type any random string (e.g. `cron-raysho-2026-secret-key`) |
 | `NEXT_PUBLIC_SITE_URL` | `https://your-project-name.vercel.app` (you'll update this with your domain later) |
 
 8. After adding all variables, click **Deploy**
 9. Wait 2–3 minutes for the build to complete
 10. When you see **Congratulations!**, click **Continue to Dashboard**
-11. Click the URL shown (e.g. fintelliQ.vercel.app) — your platform is live
+11. Click the URL shown (e.g. raysho.vercel.app) — your platform is live
 
 ✅ Platform is deployed.
 
@@ -150,7 +150,7 @@ You need accounts on three services. All have free tiers. Create them in this or
 ## STEP 7 — Connect a custom domain (optional but recommended)
 **Time: 10 minutes + 24 hours for DNS to propagate**
 
-1. Buy a domain from Namecheap, GoDaddy, or Google Domains (e.g. fintelliQ.com — ~$12/year)
+1. Buy a domain from Namecheap, GoDaddy, or Google Domains (e.g. raysho.ai — ~$12/year)
 2. In Vercel dashboard → your project → **Settings** → **Domains**
 3. Type your domain name and click **Add**
 4. Vercel will show you DNS records to add

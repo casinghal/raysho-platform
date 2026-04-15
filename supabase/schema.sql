@@ -1,4 +1,4 @@
--- FintelliQ Production Database Schema
+-- Raysho Production Database Schema
 -- Run this in: Supabase Dashboard → SQL Editor → New Query → Paste entire file → Run
 
 -- ─── CONTENT QUEUE ────────────────────────────────────────────────────────────
