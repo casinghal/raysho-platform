@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /platform
+
+# Block admin surfaces
+Disallow: /admin
+Disallow: /admin/
+
+# Block all API routes
+Disallow: /api/
+
+# Block Next.js internals
+Disallow: /_next/
+
+Sitemap: https://fintelliQ.com/sitemap.xml

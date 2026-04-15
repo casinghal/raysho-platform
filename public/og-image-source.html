@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; background: #07080c; overflow: hidden; }
+  .wrap { position: absolute; top: 0; left: 0; width: 1200px; height: 630px; background: #07080c; }
+  .bar { position: absolute; top: 0; left: 0; width: 7px; height: 630px; background-color: #f0b429; }
+  .content { position: absolute; top: 0; left: 70px; width: 1060px; height: 630px; padding-top: 76px; }
+  .eyebrow { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: #f0b429; margin-bottom: 20px; }
+  .headline { font-family: Georgia, serif; font-size: 60px; font-weight: 400; line-height: 1.12; color: #eef0f4; margin-bottom: 22px; }
+  .sub { font-family: Arial, sans-serif; font-size: 18px; color: #8891a4; line-height: 1.6; max-width: 640px; }
+  .bottom { position: absolute; bottom: 44px; left: 70px; width: 1060px; padding-top: 20px; border-top: 1px solid #1e2030; }
+  .stats-table { border-collapse: collapse; width: auto; }
+  .stats-table td { padding: 0; vertical-align: top; }
+  .stat-cell {
+    padding-right: 40px;
+    border-right: 1px solid #1e2030;
+    padding-left: 0;
+  }
+  .stat-cell-last { padding-right: 0; padding-left: 0; }
+  .stat-gap { width: 40px; }
+  .stat-value { font-family: Georgia, serif; font-size: 27px; color: #f0b429; font-weight: 400; line-height: 1; display: block; margin-bottom: 7px; }
+  .stat-label { font-family: Arial, sans-serif; font-size: 10px; color: #444a5a; text-transform: uppercase; letter-spacing: 0.09em; display: block; white-space: nowrap; }
+  .stat-gap-left { padding-left: 40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar"></div>
+  <div class="content">
+    <div class="eyebrow">AI in Finance &amp; Accounting &mdash; Knowledge Platform</div>
+    <div class="headline">The practitioner&rsquo;s guide<br>to AI in Finance &amp;<br>Accounting</div>
+    <div class="sub">Prompt frameworks, real-world case studies, tool comparisons and weekly fresh content &mdash; built for F&amp;A professionals.</div>
+  </div>
+  <div class="bottom">
+    <table class="stats-table"><tr>
+      <td class="stat-cell"><span class="stat-value">150+</span><span class="stat-label">Prompt frameworks</span></td>
+      <td class="stat-gap"></td>
+      <td class="stat-cell stat-gap-left"><span class="stat-value">10</span><span class="stat-label">Industry towers</span></td>
+      <td class="stat-gap"></td>
+      <td class="stat-cell stat-gap-left"><span class="stat-value">5</span><span class="stat-label">AI tools</span></td>
+      <td class="stat-gap"></td>
+      <td class="stat-cell stat-gap-left"><span class="stat-value">Weekly</span><span class="stat-label">Content refresh</span></td>
+      <td class="stat-gap"></td>
+      <td class="stat-cell-last stat-gap-left"><span class="stat-value">10</span><span class="stat-label">Case studies</span></td>
+    </tr></table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.env
+.env.local
+rebuild/
+tsconfig.tsbuildinfo
+.DS_Store
+*.zip
+
+# Vercel (not used — deploying on Netlify)
