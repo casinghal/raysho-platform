@@ -122,7 +122,7 @@ You need accounts on three services. All have free tiers. Create them in this or
 | `ANTHROPIC_API_KEY` | Your Anthropic key from Step 4 |
 | `YOUTUBE_API_KEY` | Your YouTube key from Step 3 |
 | `ADMIN_PASSWORD` | Choose a strong password — this is how you log into /admin |
-| `ADMIN_SECRET` | Type any random 32-character string (e.g. `xK9mP2qR7nL4wT8vY1jA5hE3uB6cF0dN`) |
+| `ADMIN_SECRET` | Type any random 32-character string (e.g. `CHANGE-ME-GENERATE-RANDOM-32-CHARS`) |
 | `CRON_SECRET` | Type any random string (e.g. `cron-raysho-2026-secret-key`) |
 | `NEXT_PUBLIC_SITE_URL` | `https://your-project-name.vercel.app` (you'll update this with your domain later) |
 

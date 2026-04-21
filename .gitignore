@@ -2,6 +2,11 @@ node_modules/
 .next/
 .env
 .env.local
+.env.production
+.env.development
+.env.staging
+.env.test
+*.log
 rebuild/
 tsconfig.tsbuildinfo
 .DS_Store
