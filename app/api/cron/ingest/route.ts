@@ -7,7 +7,7 @@ import { supabaseAdmin } from '@/lib/supabase';
 export const maxDuration = 300; // 5 minutes — ingestion takes time
 
 export async function GET(req: NextRequest) {
-  // Verify this is a legitimate Vercel Cron call (or your manual trigger)
+  // Verify this is a legitimate Netlify scheduled call (or your manual trigger)
   const authHeader = req.headers.get('authorization');
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -15,6 +15,32 @@ export async function GET(req: NextRequest) {
 
   const db = supabaseAdmin();
   const log: string[] = [];
+  const startTime = Date.now();
+
+  // Per-run counters (populated as we progress; logged at every exit point)
+  let youtubeCount   = 0;
+  let rssCount       = 0;
+  let newAfterDedup  = 0;
+  let queuedCount    = 0;
+
+  // Defensive log writer. A log-insert failure must NEVER break the main run,
+  // so every call is wrapped and its own failure is swallowed silently.
+  async function writeLog(status: 'ok' | 'error' | 'no_new', errorMessage?: string) {
+    try {
+      await db.from('ingestion_logs').insert({
+        status,
+        duration_ms:     Date.now() - startTime,
+        youtube_count:   youtubeCount,
+        rss_count:       rssCount,
+        new_after_dedup: newAfterDedup,
+        queued_count:    queuedCount,
+        error_message:   errorMessage ?? null,
+        log_lines:       log,
+      });
+    } catch {
+      // intentionally swallowed — observability must not become a new failure mode
+    }
+  }
 
   try {
     // 1. Fetch existing URLs to avoid re-ingesting duplicates
@@ -30,13 +56,17 @@ export async function GET(req: NextRequest) {
       fetchYouTubeContent(),
       fetchRSSContent(),
     ]);
-    log.push(`YouTube: ${youtube.length} raw | RSS: ${rss.length} raw`);
+    youtubeCount = youtube.length;
+    rssCount     = rss.length;
+    log.push(`YouTube: ${youtubeCount} raw | RSS: ${rssCount} raw`);
 
     // 3. Deduplicate against what we already have
     const allNew = [...youtube, ...rss].filter((item) => !knownUrls.has(item.url));
-    log.push(`New after dedup: ${allNew.length}`);
+    newAfterDedup = allNew.length;
+    log.push(`New after dedup: ${newAfterDedup}`);
 
     if (allNew.length === 0) {
+      await writeLog('no_new');
       return NextResponse.json({ ok: true, log, message: 'No new content found' });
     }
 
@@ -63,8 +93,12 @@ export async function GET(req: NextRequest) {
           status:         'pending',
         }))
       );
-      if (error) log.push(`DB insert error: ${error.message}`);
-      else log.push(`Saved ${toQueue.length} items to review queue`);
+      if (error) {
+        log.push(`DB insert error: ${error.message}`);
+      } else {
+        queuedCount = toQueue.length;
+        log.push(`Saved ${queuedCount} items to review queue`);
+      }
     }
 
     // 6. Clear "new" badge from items older than 7 days
@@ -73,9 +107,11 @@ export async function GET(req: NextRequest) {
       .update({ is_new: false })
       .lt('approved_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString());
 
+    await writeLog('ok');
     return NextResponse.json({ ok: true, log });
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Unknown error';
+    await writeLog('error', msg);
     return NextResponse.json({ ok: false, error: msg, log }, { status: 500 });
   }
 }

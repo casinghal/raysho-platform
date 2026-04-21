@@ -15,6 +15,40 @@ type ScoredItem = RawItem & {
 
 const TOWERS = ['AP','AR','R2R','Payroll','Tax','Audit','JE Analysis','Financial Statements','FP&A','Contracts','AI Tools'];
 
+// Retry wrapper around the Claude API call. Handles two transient conditions
+// from Anthropic: 429 (rate limited) and 529 (overloaded). Single retry with
+// a 2s backoff — enough to absorb a brief spike without dragging the cron
+// past its 300s maxDuration or blowing up the API budget on a sustained outage.
+async function callClaudeWithRetry(prompt: string): Promise<Response> {
+  const maxRetries = 1;
+  const backoffMs  = 2000;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY!,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001', // cheapest model — scoring only
+        max_tokens: 800,
+        messages: [{ role: 'user', content: prompt }],
+      }),
+    });
+
+    if ((res.status === 429 || res.status === 529) && attempt < maxRetries) {
+      await sleep(backoffMs);
+      continue;
+    }
+    return res;
+  }
+
+  // Unreachable in practice — the final attempt always returns — but TS needs it.
+  throw new Error('callClaudeWithRetry: exhausted without returning');
+}
+
 export async function scoreContent(items: RawItem[]): Promise<ScoredItem[]> {
   if (!items.length) return [];
 
@@ -38,19 +72,7 @@ No preamble, no markdown, no explanation — only the JSON array.
 Items to evaluate:
 ${batch.map((item, i) => `[${i}] Title: ${item.title}\nSource: ${item.source}\nSummary: ${item.summary}`).join('\n\n')}`;
 
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': process.env.ANTHROPIC_API_KEY!,
-          'anthropic-version': '2023-06-01',
-        },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001', // cheapest model — scoring only
-          max_tokens: 800,
-          messages: [{ role: 'user', content: prompt }],
-        }),
-      });
+      const res = await callClaudeWithRetry(prompt);
 
       if (!res.ok) {
         // On API error, assign default scores so items still go to queue
